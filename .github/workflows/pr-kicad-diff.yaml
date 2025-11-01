@@ -1,0 +1,26 @@
+name: KiCad PR Diff
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    types:
+    - opened
+    - synchronize
+
+env:
+    PROJECT_FILE: "./schematics/phoenix_v1/phoenix_v1.kicad_pro"
+
+jobs:
+  kiri-diff:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+    - name: Kiri
+      uses: hacker-fab/kiri-github-action@v1.2
+      with:
+        project-file: "$PROJECT_FILE"
