@@ -11,15 +11,15 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  pull_request:
+  pull_request:  
     types:
     - opened
     - synchronize
     paths:
-    - 'schematics/**'
+    - 'projekt1/**'
 
 env:
-    PROJECT_FILE: "schematics/phoenix_v1/phoenix_v1.kicad_pro"
+    PROJECT_FILE: "projekt1/new.kicad_pro"
 
 jobs:
   kiri-diff:
