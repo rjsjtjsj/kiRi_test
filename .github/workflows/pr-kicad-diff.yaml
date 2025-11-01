@@ -11,7 +11,7 @@ on:
     - synchronize
 
 env:
-    PROJECT_FILE: "projekt1/new.kicad_pro"
+    PROJECT_FILE: "projekt1/.kiri/new.kicad_pro"
 
 jobs:
   kiri-diff:
