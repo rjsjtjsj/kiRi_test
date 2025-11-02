@@ -32,3 +32,12 @@ jobs:
       with:
         project-file: "$PROJECT_FILE"
         kiri-debug: true
+
+    - name: Run upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: kiri-output
+        path: ./projekt1/
+        if-no-files-found: warn
+      env:
+        PROJECT_FILE: ./projekt1/new.kicad_pro
