@@ -1,5 +1,12 @@
 name: KiCad PR Diff
 
+permissions:
+  contents: write
+  actions: write
+  packages: write
+  pull-requests: write
+
+  
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -11,7 +18,7 @@ on:
     - synchronize
 
 env:
-    PROJECT_FILE: "projekt1/new.kicad_pro"
+    PROJECT_FILE: ./projekt1/new.kicad_pro
 
 jobs:
   kiri-diff:
@@ -23,4 +30,14 @@ jobs:
     - name: Kiri
       uses: hacker-fab/kiri-github-action@v1.2
       with:
-        project-file: "$PROJECT_FILE"
+        project-file: ./projekt1/new.kicad_pro
+        kiri-debug: true
+
+    - name: Run upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: kiri-output
+        path: ./projekt1/
+        if-no-files-found: warn
+      env:
+        PROJECT_FILE: ./projekt1/new.kicad_pro
