@@ -5,7 +5,7 @@ permissions:
   actions: write
   packages: write
   pull-requests: write
-  models: write
+
   
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
